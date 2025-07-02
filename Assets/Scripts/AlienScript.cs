@@ -65,16 +65,16 @@ public class AlienScript : MonoBehaviour
     {
         if (!Controller.CanInvert)
         {
-            Vector3 Vertical = new Vector3(0f, DownDistance, 0f);
+            Vector2 Vertical = new Vector2(0f, DownDistance);
 
-            transform.position += Vertical;
+            AlienBody.MovePosition(Vertical);
         }
     }
 
     void Move()
     {
-        Vector2 Vertical = new Vector2(Speed, 0f);
+        Vector2 Horizontal = new Vector2(Speed, 0f);
 
-        AlienBody.MovePosition(AlienBody.position + Vertical * Speed * Time.deltaTime);    
+        AlienBody.MovePosition(AlienBody.position + Horizontal * Time.deltaTime);    
     }
 }
