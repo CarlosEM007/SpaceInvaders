@@ -9,9 +9,6 @@ public class AlienScript : MonoBehaviour
     AlienControllerScript Controller;
 
     [SerializeField]
-    private Rigidbody2D AlienBody;
-
-    [SerializeField]
     public float Speed = 2;
 
     public float DownDistance = 5;
@@ -20,7 +17,6 @@ public class AlienScript : MonoBehaviour
 
     private void Start()
     {
-        AlienBody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -65,16 +61,16 @@ public class AlienScript : MonoBehaviour
     {
         if (!Controller.CanInvert)
         {
-            Vector2 Vertical = new Vector2(0f, DownDistance);
+            Vector3 Vertical = new Vector3(0f, DownDistance, 0f);
 
-            AlienBody.MovePosition(Vertical);
+            transform.position += Vertical;
         }
     }
 
     void Move()
     {
-        Vector2 Horizontal = new Vector2(Speed, 0f);
+        Vector3 Horizontal = new Vector3(Controller.AlienSpeed, 0f, 0f);
 
-        AlienBody.MovePosition(AlienBody.position + Horizontal * Time.deltaTime);    
+        transform.position += Horizontal * Time.deltaTime * Speed;
     }
 }

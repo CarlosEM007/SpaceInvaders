@@ -32,12 +32,12 @@ public class PlayerControl : MonoBehaviour
     void MovePlayer()
     {
         Vector2 Horizontal = new Vector2(Input.GetAxis("Horizontal"), 0f);
-        PlayerBody.MovePosition(PlayerBody.position + Horizontal * Speed * Time.deltaTime);
+        PlayerBody.MovePosition(PlayerBody.position + (Horizontal * Speed * Time.deltaTime));
     }
 
     void Shoot()
     {
-        if (Input.GetButtonDown("Space"))
+        if (Input.GetButtonDown("Shoot"))
         {
             GameObject BulletClone = Instantiate(Bullet, transform.position, Quaternion.identity);
         }
