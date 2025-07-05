@@ -41,8 +41,13 @@ public class AlienScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Shoot"))
         {
-            DeathAnimation.SetBool("Morto", true);
-            AlienBody.gravityScale = 1f;
+            if (!Morto)
+            {
+                DeathAnimation.SetBool("Morto", true);
+                AlienBody.gravityScale = 1f;
+
+                Controller.Increment();
+            }
         }
     }
 

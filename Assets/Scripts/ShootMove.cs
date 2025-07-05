@@ -4,6 +4,8 @@ public class ShootMove : MonoBehaviour
 {
     public float BulletSpeed = 5f;
 
+    public int BulletLimit;
+
     void Update()
     {
         Move();
