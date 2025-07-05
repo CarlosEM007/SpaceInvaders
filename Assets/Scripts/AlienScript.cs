@@ -13,10 +13,20 @@ public class AlienScript : MonoBehaviour
 
     public float DownDistance = 5;
 
+    [SerializeField]
+    private Animator DeathAnimation;
+
+    [SerializeField]
+    private Rigidbody2D AliebBody;
+
+    private bool Morto = false;
+
     /* Principal */
 
     private void Start()
     {
+        DeathAnimation.GetComponent<Animator>();
+        AliebBody.GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -31,7 +41,8 @@ public class AlienScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Shoot"))
         {
-            Destroy(gameObject);
+            DeathAnimation.SetBool("Morto", true);
+            AliebBody.gravityScale = 1f;
         }
     }
 
@@ -69,8 +80,18 @@ public class AlienScript : MonoBehaviour
 
     void Move()
     {
-        Vector3 Horizontal = new Vector3(Controller.AlienSpeed, 0f, 0f);
+        if (!Morto)
+        {
+            Vector3 Horizontal = new Vector3(Controller.AlienSpeed, 0f, 0f);
 
-        transform.position += Horizontal * Time.deltaTime * Speed;
+            transform.position += Horizontal * Time.deltaTime * Speed;
+        }
+        else
+        {
+            if(gameObject.transform.position.y < -10f)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
