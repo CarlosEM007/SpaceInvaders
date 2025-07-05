@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6783928794831981746}
   - component: {fileID: 2411415323856917849}
   - component: {fileID: 1295802738896507043}
+  - component: {fileID: 7800152437038909666}
   m_Layer: 0
   m_Name: Alien
   m_TagString: Alien
@@ -116,7 +117,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!61 &2411415323856917849
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -176,5 +177,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 1597850407788595756, guid: bdff282de6d096c4485d92c1e7cbe68f, type: 3}
-  Speed: 7
-  DownDistance: -0.5
+  Speed: 20
+  DownDistance: -0.1
+  DeathAnimation: {fileID: 7800152437038909666}
+  AlienBody: {fileID: 6783928794831981746}
+--- !u!95 &7800152437038909666
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4914400395867428072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16b5100315fd45546863dfa2ddcd709c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

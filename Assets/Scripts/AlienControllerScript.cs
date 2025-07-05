@@ -7,4 +7,9 @@ public class AlienControllerScript : MonoBehaviour
 
     [SerializeField]
     public bool CanInvert = true;
+
+    private void Start()
+    {
+        AlienSpeed = 2f;
+    }
 }

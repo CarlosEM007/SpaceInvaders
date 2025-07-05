@@ -17,7 +17,7 @@ public class AlienScript : MonoBehaviour
     private Animator DeathAnimation;
 
     [SerializeField]
-    private Rigidbody2D AliebBody;
+    private Rigidbody2D AlienBody;
 
     private bool Morto = false;
 
@@ -26,7 +26,7 @@ public class AlienScript : MonoBehaviour
     private void Start()
     {
         DeathAnimation.GetComponent<Animator>();
-        AliebBody.GetComponent<Rigidbody2D>();
+        AlienBody.GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -42,7 +42,7 @@ public class AlienScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Shoot"))
         {
             DeathAnimation.SetBool("Morto", true);
-            AliebBody.gravityScale = 1f;
+            AlienBody.gravityScale = 1f;
         }
     }
 
