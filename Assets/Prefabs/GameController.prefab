@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 65407218502243928}
   - component: {fileID: 1597850407788595756}
   m_Layer: 0
-  m_Name: AlienController
+  m_Name: GameController
   m_TagString: Controlador
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -71,6 +71,7 @@ MonoBehaviour:
   AlienSpeed: 5
   CanInvert: 1
   SpeedIncrement: 0.1
+  AliensCount: 0
 --- !u!1001 &194046780090464344
 PrefabInstance:
   m_ObjectHideFlags: 0

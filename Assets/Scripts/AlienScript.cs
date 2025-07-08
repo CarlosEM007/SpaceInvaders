@@ -6,7 +6,7 @@ public class AlienScript : MonoBehaviour
     /* Atributos */
 
     [SerializeField]
-    AlienControllerScript Controller;
+    GameControllerScript Controller;
 
     [SerializeField]
     public float Speed = 2;
@@ -47,6 +47,7 @@ public class AlienScript : MonoBehaviour
                 AlienBody.gravityScale = 1f;
 
                 Controller.Increment();
+                Controller.AlienDecrease();
             }
         }
     }
