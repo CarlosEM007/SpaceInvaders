@@ -177,10 +177,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 1597850407788595756, guid: bdff282de6d096c4485d92c1e7cbe68f, type: 3}
-  Speed: 20
-  DownDistance: -0.1
+  Speed: 1.5
+  DownDistance: -0.5
   DeathAnimation: {fileID: 7800152437038909666}
   AlienBody: {fileID: 6783928794831981746}
+  AlienCollider: {fileID: 2411415323856917849}
 --- !u!95 &7800152437038909666
 Animator:
   serializedVersion: 7

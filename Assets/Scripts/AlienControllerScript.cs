@@ -1,8 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class GameControllerScript : MonoBehaviour
+public class AlienControllerScript : MonoBehaviour
 {
     [SerializeField]
     public float AlienSpeed = 2f;
@@ -17,18 +15,13 @@ public class GameControllerScript : MonoBehaviour
     public int AliensCount;
 
     [SerializeField]
-    public Text Vitoria;
+    public GameController Controller;
 
-    void Start() 
+
+    void Start()
     {
         AlienSpeed = 2f;
         AliensCount = GameObject.FindGameObjectsWithTag("Alien").Length;
-        Vitoria.gameObject.SetActive(false);
-    }
-
-    void Update()
-    {
-        RestartGame();
     }
 
     public void Increment()
@@ -43,21 +36,14 @@ public class GameControllerScript : MonoBehaviour
         }
     }
 
+
     public void AlienDecrease()
     {
         AliensCount -= 1;
-    }
 
-    void RestartGame()
-    {
-        if(AliensCount == 0)
+        if(AliensCount <= 0)
         {
-            Vitoria.enabled = true;
-        }
-
-        if(Input.GetKeyDown("return") || Input.GetKeyDown("r"))
-        {
-            SceneManager.LoadScene("Fase1");
+            Controller.Victory();
         }
     }
 }

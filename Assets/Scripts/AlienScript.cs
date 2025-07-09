@@ -6,18 +6,22 @@ public class AlienScript : MonoBehaviour
     /* Atributos */
 
     [SerializeField]
-    GameControllerScript Controller;
+    AlienControllerScript Controller;
 
     [SerializeField]
     public float Speed = 2;
 
-    public float DownDistance = 5;
+    [SerializeField]
+    public float DownDistance = -2;
 
     [SerializeField]
     private Animator DeathAnimation;
 
     [SerializeField]
     private Rigidbody2D AlienBody;
+
+    [SerializeField]
+    private BoxCollider2D AlienCollider;
 
     private bool Morto = false;
 
@@ -27,6 +31,7 @@ public class AlienScript : MonoBehaviour
     {
         DeathAnimation.GetComponent<Animator>();
         AlienBody.GetComponent<Rigidbody2D>();
+        AlienCollider.GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -43,13 +48,20 @@ public class AlienScript : MonoBehaviour
         {
             if (!Morto)
             {
-                DeathAnimation.SetBool("Morto", true);
-                AlienBody.gravityScale = 1f;
-
-                Controller.Increment();
-                Controller.AlienDecrease();
+                SetMorto();
             }
         }
+    }
+
+    private void SetMorto()
+    {
+        AlienCollider.isTrigger = true;
+        Morto = true;
+        DeathAnimation.SetBool("Morto", true);
+        AlienBody.gravityScale = 1f;
+
+        Controller.Increment();
+        Controller.AlienDecrease();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
