@@ -37,9 +37,11 @@ public class PlayerControl : MonoBehaviour
 
     void Shoot()
     {
+        GameObject BulletClone;
+
         if (Input.GetButtonDown("Shoot"))
         {
-            GameObject BulletClone = Instantiate(Bullet, transform.position, Quaternion.identity);
+            BulletClone = Instantiate(Bullet, transform.position, Quaternion.identity);
         }
     }
 }

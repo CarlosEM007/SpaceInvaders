@@ -23,6 +23,9 @@ public class AlienScript : MonoBehaviour
     [SerializeField]
     private BoxCollider2D AlienCollider;
 
+    [SerializeField]
+    public GameObject Bullet;
+
     private bool Morto = false;
 
     /* Principal */

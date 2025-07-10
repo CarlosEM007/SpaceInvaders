@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class ShootMove : MonoBehaviour
 {
-    public float BulletSpeed = 5f;
+    [SerializeField]
+    public float BulletSpeed;
 
-    public int BulletLimit;
+    [SerializeField]
+    public string TargetTag;
 
     void Update()
     {
@@ -14,7 +16,7 @@ public class ShootMove : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Alien"))
+        if(collision.CompareTag(TargetTag))
         {
             Destroy(gameObject);
         }
@@ -28,7 +30,7 @@ public class ShootMove : MonoBehaviour
     // Passou dos limites do jogo.
     void OutOfBounds()
     {
-        if (transform.position.y > 12f)
+        if (transform.position.y > 12f || transform.position.y < -12f)
         {
             Destroy(gameObject);
         }
