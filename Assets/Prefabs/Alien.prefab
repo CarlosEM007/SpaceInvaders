@@ -182,6 +182,10 @@ MonoBehaviour:
   DeathAnimation: {fileID: 7800152437038909666}
   AlienBody: {fileID: 6783928794831981746}
   AlienCollider: {fileID: 2411415323856917849}
+  Bullet: {fileID: 7864776471851464657, guid: e6e7fce5655600c4f96eb79fb344bb74, type: 3}
+  Layer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!95 &7800152437038909666
 Animator:
   serializedVersion: 7

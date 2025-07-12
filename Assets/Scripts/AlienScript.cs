@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -26,7 +27,14 @@ public class AlienScript : MonoBehaviour
     [SerializeField]
     public GameObject Bullet;
 
-    private bool Morto = false;
+    [SerializeField]
+    public LayerMask Layer;
+
+    private bool Morto = false; // Está Vivo
+
+    private bool AlienAfrente;
+
+    bool PodeAtirar = true; // Valida se pode atirar
 
     /* Principal */
 
@@ -35,12 +43,15 @@ public class AlienScript : MonoBehaviour
         DeathAnimation.GetComponent<Animator>();
         AlienBody.GetComponent<Rigidbody2D>();
         AlienCollider.GetComponent<BoxCollider2D>();
+
+        AlienAfrente = FreeDown();
     }
 
     void Update()
     {
         Move();
         Down();
+        Shoot();
     }
 
     /* -- Events -- */
@@ -56,15 +67,10 @@ public class AlienScript : MonoBehaviour
         }
     }
 
-    private void SetMorto()
+    void OnDrawGizmos()
     {
-        AlienCollider.isTrigger = true;
-        Morto = true;
-        DeathAnimation.SetBool("Morto", true);
-        AlienBody.gravityScale = 1f;
-
-        Controller.Increment();
-        Controller.AlienDecrease();
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * 1f);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -88,6 +94,16 @@ public class AlienScript : MonoBehaviour
     }
 
     /* -- Methods -- */
+    private void SetMorto()
+    {
+        AlienCollider.isTrigger = true;
+        Morto = true;
+        DeathAnimation.SetBool("Morto", true);
+        AlienBody.gravityScale = 1f;
+
+        Controller.Increment();
+        Controller.AlienDecrease();
+    }
 
     private void Down()
     {
@@ -114,5 +130,33 @@ public class AlienScript : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    void Shoot()
+    {
+        if (!Morto && !AlienAfrente && PodeAtirar)
+        {
+            GameObject CloneBullet = Instantiate(Bullet, transform.position, Quaternion.identity);
+            StartCoroutine(Cooldown());
+        }
+        else if (!AlienAfrente)
+        {
+            AlienAfrente = FreeDown();
+        }
+    }
+
+    private bool FreeDown()
+    {
+        float Distancia = 1f;
+        RaycastHit2D Hit = Physics2D.Raycast(transform.position, Vector2.down, Distancia, Layer);
+        return Hit.collider;
+    }
+
+    IEnumerator Cooldown()
+    {
+        PodeAtirar = false;
+        float tempo = Random.Range(3f, 5f);
+        yield return new WaitForSeconds(tempo);
+        PodeAtirar = true;
     }
 }

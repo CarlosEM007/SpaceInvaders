@@ -123,6 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2db7270e316f8b44849bb0a3ad59237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletSpeed: -8
+  BulletSpeed: -5
   TargetTag: Player
-  BulletLimit: 1
