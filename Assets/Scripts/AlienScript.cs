@@ -70,7 +70,12 @@ public class AlienScript : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * 1f);
+
+        Vector3 Position = transform.position;
+
+        Position.y -= 0.6f;
+
+        Gizmos.DrawLine(Position, Position + Vector3.down * 1f);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -148,7 +153,13 @@ public class AlienScript : MonoBehaviour
     private bool FreeDown()
     {
         float Distancia = 1f;
-        RaycastHit2D Hit = Physics2D.Raycast(transform.position, Vector2.down, Distancia, Layer);
+
+
+        Vector3 Position = transform.position;
+
+        Position.y -= 0.6f;
+
+        RaycastHit2D Hit = Physics2D.Raycast(Position, Vector2.down, Distancia, Layer);
         return Hit.collider;
     }
 
