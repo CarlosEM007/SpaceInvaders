@@ -45,6 +45,11 @@ public class AlienScript : MonoBehaviour
         AlienCollider.GetComponent<BoxCollider2D>();
 
         AlienAfrente = FreeDown();
+
+        if (AlienAfrente)
+        {
+            StartCoroutine(Cooldown());
+        }
     }
 
     void Update()
@@ -65,17 +70,6 @@ public class AlienScript : MonoBehaviour
                 SetMorto();
             }
         }
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-
-        Vector3 Position = transform.position;
-
-        Position.y -= 0.6f;
-
-        Gizmos.DrawLine(Position, Position + Vector3.down * 1f);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -144,7 +138,7 @@ public class AlienScript : MonoBehaviour
             GameObject CloneBullet = Instantiate(Bullet, transform.position, Quaternion.identity);
             StartCoroutine(Cooldown());
         }
-        else if (!AlienAfrente)
+        else if (AlienAfrente)
         {
             AlienAfrente = FreeDown();
         }
@@ -153,7 +147,6 @@ public class AlienScript : MonoBehaviour
     private bool FreeDown()
     {
         float Distancia = 1f;
-
 
         Vector3 Position = transform.position;
 

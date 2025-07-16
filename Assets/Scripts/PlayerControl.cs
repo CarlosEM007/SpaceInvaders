@@ -1,22 +1,25 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class PlayerControl : MonoBehaviour
 {
-    /* Principal */
-
     [SerializeField]
     private float Speed = 5f;
 
     [SerializeField]
     private GameObject Bullet;
 
+    [SerializeField]
+    public GameController Controller;
+
     private Rigidbody2D PlayerBody;
 
-    /* Principal */
+    public int Life;
 
     void Start()
     {
         PlayerBody = GetComponent<Rigidbody2D>();
+        Life = 3;
     }
 
     void Update()
@@ -25,9 +28,21 @@ public class PlayerControl : MonoBehaviour
         Shoot();
     }
 
-    /* -- Events -- */
-
-    /* -- Methods -- */
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("AlienShoot") || collision.gameObject.CompareTag("Alien"))
+        {
+            if (Life > 0)
+            {
+                Life--;
+            }
+            else
+            {
+                Controller.CanRestart = true;
+                Destroy(gameObject);
+            }
+        }
+    }
 
     void MovePlayer()
     {
