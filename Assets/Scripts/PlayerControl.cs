@@ -12,6 +12,9 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     public GameController Controller;
 
+    [SerializeField]
+    public LifeScript LifeScript;
+
     private Rigidbody2D PlayerBody;
 
     public int Life;
@@ -35,6 +38,7 @@ public class PlayerControl : MonoBehaviour
             if (Life > 0)
             {
                 Life--;
+                LifeScript.AtualizarVidas(Life);
             }
             else
             {
