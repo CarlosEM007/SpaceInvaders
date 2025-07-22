@@ -2932,7 +2932,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1868464135590978825, guid: a6b4406a44ac9884c846d615c6b2123c, type: 3}
       propertyPath: m_Name
-      value: Text
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3140317803003433566, guid: a6b4406a44ac9884c846d615c6b2123c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -901
+      objectReference: {fileID: 0}
+    - target: {fileID: 3140317803003433566, guid: a6b4406a44ac9884c846d615c6b2123c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 476
       objectReference: {fileID: 0}
     - target: {fileID: 4267203260353918799, guid: a6b4406a44ac9884c846d615c6b2123c, type: 3}
       propertyPath: m_Enabled

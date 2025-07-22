@@ -20,6 +20,8 @@ public class LifeScript : MonoBehaviour
     {
         vidas = new Image[maxVidas];
 
+        float lngPosicaoAnterior = 0;
+
         for (int i = 0; i < maxVidas; i++)
         {
             GameObject obj = new GameObject("Vida_" + (i + 1));
@@ -27,10 +29,12 @@ public class LifeScript : MonoBehaviour
 
             Image img = obj.AddComponent<Image>();
             img.sprite = iconeVida;
+
             img.rectTransform.sizeDelta = new Vector2(16, 16); // tamanho do ícone
-            img.rectTransform.anchoredPosition = new Vector2(i * 10, 0); // espaçamento horizontal
+            img.rectTransform.anchoredPosition = new Vector2((lngPosicaoAnterior + 0.02f), 0); // espaçamento horizontal
 
             vidas[i] = img;
+            lngPosicaoAnterior = img.rectTransform.anchoredPosition.x;
         }
     }
 

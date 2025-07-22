@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     public Text Vitoria;
 
     [SerializeField]
-    public bool CanRestart;
+    private bool CanRestart;
 
     void Start()
     {
@@ -21,10 +21,16 @@ public class GameController : MonoBehaviour
         RestartGame();
     }
 
-    public void Victory()
+    public void MostrarMensagem()
     {
         Vitoria.gameObject.SetActive(true);
         CanRestart = true;
+    }
+
+    public void Derrota()
+    {
+        Vitoria.text = "Você foi derrotado! :(";
+        MostrarMensagem();
     }
 
     void RestartGame()

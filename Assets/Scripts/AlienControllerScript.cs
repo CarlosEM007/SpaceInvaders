@@ -43,7 +43,7 @@ public class AlienControllerScript : MonoBehaviour
 
         if(AliensCount <= 0)
         {
-            Controller.Victory();
+            Controller.MostrarMensagem();
         }
     }
 }

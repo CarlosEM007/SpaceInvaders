@@ -42,7 +42,7 @@ public class PlayerControl : MonoBehaviour
             }
             else
             {
-                Controller.CanRestart = true;
+                Controller.Derrota();
                 Destroy(gameObject);
             }
         }
