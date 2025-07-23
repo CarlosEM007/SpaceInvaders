@@ -104,7 +104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletSpeed: 8
   TargetTag: Alien
-  BulletLimit: 0
+  PlayerShoot: 1
+  playerControl: {fileID: 0}
 --- !u!61 &-747382382564058738
 BoxCollider2D:
   m_ObjectHideFlags: 0

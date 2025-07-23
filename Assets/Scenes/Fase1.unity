@@ -3281,6 +3281,14 @@ PrefabInstance:
       propertyPath: Vitoria
       value: 
       objectReference: {fileID: 413254140}
+    - target: {fileID: 769158412813467156, guid: f65978a698e201a499617cca80f55ccc, type: 3}
+      propertyPath: alienScript
+      value: 
+      objectReference: {fileID: 1295802738896507043, guid: 703065c37435d8e469e54bbb6466e41a, type: 3}
+    - target: {fileID: 769158412813467156, guid: f65978a698e201a499617cca80f55ccc, type: 3}
+      propertyPath: playerControl
+      value: 
+      objectReference: {fileID: 3106935426734118293, guid: 4f697fffd21690f42a60b31de13d7ac2, type: 3}
     - target: {fileID: 1144129177582573869, guid: f65978a698e201a499617cca80f55ccc, type: 3}
       propertyPath: m_Name
       value: GameController

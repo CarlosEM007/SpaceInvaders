@@ -163,4 +163,9 @@ public class AlienScript : MonoBehaviour
         yield return new WaitForSeconds(tempo);
         PodeAtirar = true;
     }
+
+    public void EndGame()
+    {
+        Speed = 0;
+    }
 }

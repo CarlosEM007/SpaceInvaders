@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShootMove : MonoBehaviour
@@ -7,6 +8,18 @@ public class ShootMove : MonoBehaviour
 
     [SerializeField]
     public string TargetTag;
+
+    [SerializeField]
+    public bool PlayerShoot;
+
+    public float lifetime = 3f;
+
+    public System.Action onDestroy;
+
+    void Start()
+    {
+        Destroy(gameObject, lifetime);
+    }
 
     void Update()
     {
@@ -34,5 +47,11 @@ public class ShootMove : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void OnDestroy()
+    {
+        if (onDestroy != null)
+            onDestroy.Invoke();
     }
 }

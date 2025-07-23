@@ -10,6 +10,13 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private bool CanRestart;
 
+    [SerializeField]
+    private PlayerControl playerControl;
+
+    [SerializeField]
+    private AlienScript alienScript;
+
+
     void Start()
     {
         Vitoria.gameObject.SetActive(false);
@@ -23,6 +30,9 @@ public class GameController : MonoBehaviour
 
     public void MostrarMensagem()
     {
+        alienScript.EndGame();
+        playerControl.EndGame();
+
         Vitoria.gameObject.SetActive(true);
         CanRestart = true;
     }

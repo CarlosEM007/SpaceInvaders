@@ -7,6 +7,12 @@ public class PlayerControl : MonoBehaviour
     private float Speed = 5f;
 
     [SerializeField]
+    private int ShootLimit = 1;
+
+    [SerializeField]
+    private int Shoots = 0;
+
+    [SerializeField]
     private GameObject Bullet;
 
     [SerializeField]
@@ -23,6 +29,7 @@ public class PlayerControl : MonoBehaviour
     {
         PlayerBody = GetComponent<Rigidbody2D>();
         Life = 3;
+        Speed = 10;
     }
 
     void Update()
@@ -56,11 +63,23 @@ public class PlayerControl : MonoBehaviour
 
     void Shoot()
     {
-        GameObject BulletClone;
+            GameObject BulletClone;
 
-        if (Input.GetButtonDown("Shoot"))
-        {
-            BulletClone = Instantiate(Bullet, transform.position, Quaternion.identity);
-        }
+            if (Input.GetButtonDown("Shoot") && Shoots < ShootLimit)
+            {
+                BulletClone = Instantiate(Bullet, transform.position, Quaternion.identity);
+                BulletClone.GetComponent<ShootMove>().onDestroy = OnBulletDestroyed;
+                Shoots++;
+            }
+    }
+
+    public void OnBulletDestroyed()
+    {
+        Shoots--;
+    }
+
+    public void EndGame()
+    {
+        Speed = 0;
     }
 }
